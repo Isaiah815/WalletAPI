@@ -1,0 +1,11 @@
+databaseChangeLog:
+- changeSet:
+    id: db.changelog-001-create-wallet-table
+    author: kip
+    changes:
+      - sqlFile:
+          path: db.changelog-001-create-wallet-table.sql
+          dbms: postgresql
+          splitStatements: true
+          stripComments: true
+          relativeToChangeLogFile: true
