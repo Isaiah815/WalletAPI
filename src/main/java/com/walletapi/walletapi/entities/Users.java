@@ -30,9 +30,9 @@ public class Users {
     @Column(name="email")
     private String email;
 
-    @Column(name="role_id")
-    private UUID roleId;
 
-
+    @ManyToOne
+    @JoinColumn(name = "role_id")  // FK column in users table
+    private Roles userRole;
 
 }
