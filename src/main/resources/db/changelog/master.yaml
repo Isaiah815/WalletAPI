@@ -4,8 +4,55 @@ databaseChangeLog:
     author: kip
     changes:
       - sqlFile:
-          path: db.changelog-001-create-wallet-table.sql
+          path: db.changelog-001-create-creating-wallet-table.sql
           dbms: postgresql
           splitStatements: true
           stripComments: true
           relativeToChangeLogFile: true
+
+- changeSet:
+      id: creating-wallet-table
+      author: kip
+      changes:
+        - sqlFile:
+            path: creating-wallet-table.sql
+            dbms: postgresql
+            splitStatements: true
+            stripComments: true
+            relativeToChangeLogFile: true
+
+- changeSet:
+    id: creating-login-table
+    author: kip
+    changes:
+      - sqlFile:
+          path: creating-login-table.sql
+          dbms: postgresql
+          splitStatements: true
+          stripComments: true
+          relativeToChangeLogFile: true
+
+- changeSet:
+    id: creating-roles-table
+    author: kip
+    changes:
+      - sqlFile:
+          path: creating-roles-table.sql
+          dbms: postgresql
+          splitStatements: true
+          stripComments: true
+          relativeToChangeLogFile: true
+
+- changeSet:
+    id: creating-transaction-table
+    author: kip
+    changes:
+      - sqlFile:
+          path: creating-transaction-table.sql
+          dbms: postgresql
+          splitStatements: true
+          stripComments: true
+          relativeToChangeLogFile: true
+
+
+
