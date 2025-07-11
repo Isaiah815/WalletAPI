@@ -5,4 +5,5 @@ CREATE  TABLE users(
     last_name varchar(100),
     role_id UUID,
     email varchar(100) unique
+    CONSTRAINTS role_id_key FOREIGN key(role_id) REFERENCES roles (role_id)
 );
