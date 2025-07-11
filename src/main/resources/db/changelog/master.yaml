@@ -4,7 +4,7 @@ databaseChangeLog:
     author: kip
     changes:
       - sqlFile:
-          path: db.changelog-001-create-creating-wallet-table.sql
+          path: create-users-table.sql
           dbms: postgresql
           splitStatements: true
           stripComments: true
