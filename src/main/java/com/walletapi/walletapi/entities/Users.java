@@ -32,7 +32,7 @@ public class Users {
 
 
     @ManyToOne
-    @JoinColumn(name = "role_id")  // FK column in users table
+    @JoinColumn(name = "role_id")
     private Roles userRole;
 
 }
