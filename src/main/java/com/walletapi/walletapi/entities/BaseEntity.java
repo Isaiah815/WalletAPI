@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BaseEntity {
 
-
     @Column(name="created_by")
     public String createdBy;
 

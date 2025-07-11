@@ -15,7 +15,24 @@ import java.util.UUID;
 public class Users {
     @Id
     @Column(name="id")
-    public UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  UUID id;
+
+    @Column(name="username")
+    private String username;
+
+    @Column(name="first_name")
+    private String firstName;
+
+    @Column(name="last_name")
+    private String lastName;
+
+    @Column(name="email")
+    private String email;
+
+    @Column(name="role_id")
+    private UUID roleId;
+
 
 
 }
