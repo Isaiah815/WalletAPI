@@ -12,9 +12,10 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="users")
-public class Users {
+public class Users  {
     @Id
     @Column(name="id")
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  UUID id;
 
@@ -29,6 +30,7 @@ public class Users {
 
     @Column(name="email")
     private String email;
+
 
 
 
