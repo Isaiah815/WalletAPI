@@ -15,20 +15,23 @@ import java.util.UUID;
 public class Users  {
     @Id
     @Column(name="id")
-    private UUID id;
 
-    @Column(name = "username")
-    private String userName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  UUID id;
 
+    @Column(name="username")
+    private String username;
 
-    @Column(name ="first_name" )
+    @Column(name="first_name")
     private String firstName;
 
-    @Column(name ="second_name" )
-    private String secondName;
+    @Column(name="last_name")
+    private String lastName;
 
-    @Column(name = "email")
-    private String userEmail;
+    @Column(name="email")
+    private String email;
+
+
 
 
     @ManyToOne

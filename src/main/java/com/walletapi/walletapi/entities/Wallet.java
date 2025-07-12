@@ -14,6 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Wallet extends  BaseEntity{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="wallet_id")
     private UUID walletId;
 
