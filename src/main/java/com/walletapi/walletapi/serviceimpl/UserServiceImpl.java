@@ -35,7 +35,8 @@ public class UserServiceImpl implements UserService {
             throw new DuplicateRequestException("Email already exists");
         }
 
-        Users user = userRepository.save(userMapper.toUser(userRequestDTO));
+        var users=userMapper.toUser(userRequestDTO);
+        Users user = userRepository.save(users);
 
         //upon successful user we can create a wallet
         //this code of wallet needs to be refactored

@@ -53,6 +53,16 @@ databaseChangeLog:
           splitStatements: true
           stripComments: true
           relativeToChangeLogFile: true
+- changeSet:
+      id: 001-amend-id-n-users-table
+      author: chepnet
+      changes:
+          - sqlFile:
+                path: 001-amend-id-n-users-table.sql
+                dbms: postgresql
+                splitStatements: true
+                stripComments: true
+                relativeToChangeLogFile: true
 
 
 
