@@ -1,9 +1,6 @@
 package com.walletapi.walletapi.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,8 +13,10 @@ import java.util.UUID;
 @Data
 @Table(name = "roles")
 @Entity
-public class Roles {
+
+public class Roles extends BaseEntity {
     @Id
+    @GeneratedValue
     @Column(name = "role_id")
     private UUID roleId;
 
