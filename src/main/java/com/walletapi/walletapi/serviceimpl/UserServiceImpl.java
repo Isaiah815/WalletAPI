@@ -11,45 +11,63 @@ import com.walletapi.walletapi.repository.WalletRepository;
 import com.walletapi.walletapi.services.UserService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
+
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final WalletRepository walletRepository;
 
-
+    @Override
     public UserResponseDTO createUser(UserRequestDTO userRequestDTO) {
-        //we are creating user and wallet
-        //validation that needs to be done
-        //if user exists by email
-       //Exceptions may fail to work because we haven't configure
-        if(userRepository.existsByEmail(userRequestDTO.getEmail())) {
+        if (userRepository.existsByEmail(userRequestDTO.getEmail())) {
             throw new DuplicateRequestException("Email already exists");
         }
 
-        var users=userMapper.toUser(userRequestDTO);
-        Users user = userRepository.save(users);
+        Users user = userMapper.toUser(userRequestDTO);
+        user = userRepository.save(user);
 
-        //upon successful user we can create a wallet
-        //this code of wallet needs to be refactored
-        Wallet wallet=new Wallet();
+        Wallet wallet = new Wallet();
         wallet.setUsers(user);
         wallet.setWalletName(user.getUsername());
         wallet.setCreatedBy("zippy");
         wallet.setCreatedOn(LocalDateTime.now());
+
         walletRepository.save(wallet);
 
-        UserResponseDTO userResponseDTO=userMapper.toUserResponseDTO(user);
-        userResponseDTO.setWallet(wallet);
-        return userResponseDTO;
+        UserResponseDTO responseDTO = userMapper.toUserResponseDTO(user);
+        responseDTO.setWallet(wallet);
 
+        return responseDTO;
+    }
+
+    @Override
+    public List<Users> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public Optional<Users> getUserById(UUID id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
+    public Users saveUser(Users users) {
+        return userRepository.save(users);
+    }
+
+    @Override
+    public void deleteUser(UUID id) {
+        userRepository.deleteById(id);
     }
 }

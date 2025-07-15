@@ -2,6 +2,7 @@ spring:
   application:
     name: walletapi
 
+
   datasource:
      url: jdbc:postgresql://localhost:5432/digital
      password: Password
